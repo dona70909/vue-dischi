@@ -11,7 +11,7 @@
             </div>
 
             <div v-else class="text-white">
-                <h1>Loading....</h1>
+                <Loader/>
             </div>
         </div>
     </main>
@@ -19,12 +19,14 @@
 
 <script>
 import Disco from './Disco.vue'
+import Loader from './Loader.vue'
 import axios from 'axios'
 
 export default {
     name:"MainWrapper",
     components:{
         Disco,
+        Loader,
     },
 
     data(){
