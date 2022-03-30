@@ -1,13 +1,17 @@
 <template>
     <main class="container-fluid">
         <div class="row justify-content-center">
-            <div class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
+            <div v-if="disclist != null" class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
                 <Disco v-for = "(disco,index) in disclist" :key="index" 
                 :image=disco.poster
                 :title=disco.title
                 :author=disco.author
                 :year=disco.year
                 />
+            </div>
+
+            <div v-else class="text-white">
+                <h1>Loading....</h1>
             </div>
         </div>
     </main>
@@ -29,9 +33,12 @@ export default {
         }
     },
 
-    created: function(){
-        return setTimeout(this.getDiscListApi(),10000);
-        /* this.getDiscListApi(); */
+    /*created: function(){
+        this.getDiscListApi(); 
+    }, */
+
+    mounted(){
+        setTimeout(this.getDiscListApi,10000);
     },
 
     methods: {
