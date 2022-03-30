@@ -21,8 +21,8 @@ export default {
 
 <style lang="scss" scoped>
 #wave {
-	height: 70px;
-	width: 70px;
+	height: 300px;
+	width: 300px;
 	fill: #fff;
 }
 
