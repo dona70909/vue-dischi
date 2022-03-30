@@ -24,9 +24,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/style.scss";
+
 .card{
     width: calc(80% / 5);
-    background: rgb(46, 58, 70);
+    background:$lightGrey;
 
     img{
         width: 80%;
@@ -39,7 +41,7 @@ export default {
             font-size: .9rem;
         }
         p{
-            color:#75776c;
+            color:$greyTextColor;
             font-size: .8rem;
             font-weight: 600;
         }

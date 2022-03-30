@@ -60,9 +60,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/scss/style.scss";
 
 main{
-    background: rgb(30, 45, 59);
+    background:$darkGrey;
     height: calc(95vh - 1rem);
     display: flex;
     justify-content: center;
