@@ -20,19 +20,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+/* dimensioni waves */
 #wave {
 	height: 300px;
 	width: 300px;
 	fill: #fff;
 }
 
+/* ciclo for da $i=1 a 9 (per ogni linea)*/
 @for $i from 1 through 9 {
 	#Line_#{$i} {
 		animation: pulse 1s infinite;
 		animation-delay: $i * .15s;
 	}
 }
-
+/* scale da 1 a .7 in loop */
 @keyframes pulse {
 	0% {
 		transform: scaleY(1);
