@@ -1,7 +1,7 @@
 <template>
     <main class="container-fluid">
-        <div class="row p-4 justify-content-center">
-            <div class="col-10 d-flex flex-wrap justify-content-center wrapper-card">
+        <div class="row justify-content-center">
+            <div class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
                 <Disco v-for = "(disco,index) in disclist" :key="index" 
                 :image=disco.poster
                 :title=disco.title
@@ -30,7 +30,8 @@ export default {
     },
 
     created: function(){
-        this.getDiscListApi();
+        return setTimeout(this.getDiscListApi(),10000);
+        /* this.getDiscListApi(); */
     },
 
     methods: {
@@ -52,12 +53,14 @@ export default {
 <style lang="scss" scoped>
 
 main{
-    background: rgb(196, 126, 196);
+    background: rgb(30, 45, 59);
     height: calc(95vh - 1rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .wrapper-card{
     gap: 1rem;
-    background: black;
 }
 
 </style>

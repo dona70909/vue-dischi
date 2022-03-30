@@ -20,7 +20,7 @@ export default {
 
 header{
     padding: .5rem 3rem;
-    background-color: rgb(148, 81, 81);
+    background-color: rgb(46, 58, 70);
 
     .container-logo{
         height:5vh;
