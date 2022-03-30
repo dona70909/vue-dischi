@@ -6,6 +6,7 @@
                 :image=disco.poster
                 :title=disco.title
                 :author=disco.author
+                :year=disco.year
                 />
             </div>
         </div>
@@ -56,8 +57,7 @@ main{
 }
 .wrapper-card{
     gap: 1rem;
-    background-color: black;
-   
+    background: black;
 }
 
 </style>
