@@ -25,7 +25,7 @@ export default {
 
 <style lang="scss" scoped>
 .card{
-    width: calc(70% / 5);
+    width: calc(80% / 5);
 
     img{
         width: 80%;
