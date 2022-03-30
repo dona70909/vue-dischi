@@ -2,24 +2,49 @@
     <main class="container-fluid">
         <div class="row p-4 justify-content-center">
             <div class="col-10 d-flex flex-wrap justify-content-center wrapper-card">
-                <div class="card">
-                    <img class="card-img-top" src="https://picsum.photos/200/200.jpg" alt="Card image cap">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">Some quick example </p>
-                    </div>
-                </div>
-
-        
-                
+                <Disco v-for = "(disco,index) in disclist" :key="index" 
+                :image=disco.poster
+                :title=disco.title
+                :author=disco.author
+                />
             </div>
         </div>
     </main>
 </template>
 
 <script>
+import Disco from './Disco.vue'
+import axios from 'axios'
+
 export default {
     name:"MainWrapper",
+    components:{
+        Disco,
+    },
+
+    data(){
+        return{
+            disclist:null,
+        }
+    },
+
+    created: function(){
+        this.getDiscListApi();
+    },
+
+    methods: {
+        getDiscListApi(){
+            axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+            .then((response) => {
+                this.disclist = response.data.response;
+                console.table(response.data.response);
+                console.table(this.disclist)
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+        }
+    },
 }
 </script>
 
@@ -32,13 +57,7 @@ main{
 .wrapper-card{
     gap: 1rem;
     background-color: black;
-    .card{
-        width: calc(100% / 5);
-
-        img{
-            width: 100%;
-        }
-    }
+   
 }
 
 </style>
