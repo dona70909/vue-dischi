@@ -8,7 +8,7 @@
             </div>
             <div class="col-4">
                 <select v-model="selected" class="form-select">
-                    <option class="text-white bg-dark" value="">Seleziona </option>
+                    <option class="text-white bg-dark" value=""> All </option>
                     <option class="text-white bg-dark" v-for = "(genre,index) in listGenres()" :key="index" :value="genre">{{genre}}</option>
                 </select>
             </div>
@@ -65,10 +65,10 @@ export default {
 
     },
 
-    mounted(){
+   /*  mounted(){
         console.error("questa lista e' filtered");
         this.giveListParent();
-    }  
+    }   */
 }
 </script>
 
