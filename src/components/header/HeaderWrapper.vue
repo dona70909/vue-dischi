@@ -1,16 +1,24 @@
 <template>
     <header class="container-fluid">
-        <div class="row">
-            <div class="col-12">
+        <div class="row justify-content-between">
+            <div class="col-6">
                 <div class="container-logo">
                     <img :src="require('@/assets/img/logo-small.png')" alt="logo spotify">
                 </div>
+            </div>
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example">
+                    <option class="text-white bg-dark" selected>Open this select menu</option>
+                    <option class="text-white bg-dark" v-for = "(disco,index) in disclist" :key="index"  :value="disco.genres">{{disco.genre}}</option>
+                </select>
             </div>
         </div>
     </header>
 </template>
 
 <script>
+
+
 export default {
     name:"HeaderWrapper"
 }
