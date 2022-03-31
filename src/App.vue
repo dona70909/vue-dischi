@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <HeaderWrapper :parentList="parentDiscList" />
+    <HeaderWrapper @filterList="getListFiltered" :parentList="parentDiscList" />
     <!-- ASCOLTO L'EVENTO - QUINDI OTTENGO LA LISTA -->
     <MainWrapper @getList="getListFromChild"
+    :filterList="filteGenreList"
     />
   </div>
 </template>
@@ -20,17 +21,25 @@ export default {
 
   data(){
     return{
-      parentDiscList:null,
+      parentDiscList:[],
+      filteGenreList:[],
     }
   },
 
   methods:{
     getListFromChild(element){
-      console.warn(element);
       this.parentDiscList = element;
-      console.table(this.parentDiscList);
+      console.warn(this.parentDiscList);
     }, 
-  }
+
+    getListFiltered(filtered){
+      this.filteGenreList = filtered;
+      console.log("filter")
+      console.warn(this.filteGenreList);
+    }
+  } 
+
+
 }
 </script>
 
