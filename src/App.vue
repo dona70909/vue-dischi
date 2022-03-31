@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <HeaderWrapper />
+    <HeaderWrapper :parentList="parentDiscList" />
     <!-- ASCOLTO L'EVENTO - QUINDI OTTENGO LA LISTA -->
-    <MainWrapper @getList="getListFromChild" />
+    <MainWrapper @getList="getListFromChild"
+    />
   </div>
 </template>
 
@@ -16,10 +17,19 @@ export default {
     HeaderWrapper,
     MainWrapper,
   },
+
+  data(){
+    return{
+      parentDiscList:null,
+    }
+  },
+
   methods:{
     getListFromChild(element){
       console.warn(element);
-    }
+      this.parentDiscList = element;
+      console.table(this.parentDiscList);
+    }, 
   }
 }
 </script>

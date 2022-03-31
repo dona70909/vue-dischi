@@ -9,7 +9,7 @@
             <div class="col-6">
                 <select class="form-select" aria-label="Default select example">
                     <option class="text-white bg-dark" selected>Open this select menu</option>
-                    <!-- <option class="text-white bg-dark" v-for = "(disco,index) in disclist" :key="index"  :value="disco.genres">{{disco.genre}}</option> -->
+                    <option class="text-white bg-dark" v-for = "(disco,index) in parentList" :key="index"  :value="disco.genres">{{disco.genre}}</option> -->
                 </select>
             </div>
         </div>
@@ -20,7 +20,10 @@
 
 
 export default {
-    name:"HeaderWrapper"
+    name:"HeaderWrapper",
+    props:{
+        "parentList":Object,
+    }
 }
 </script>
 
