@@ -3,7 +3,7 @@
         <!-- py/4 -->
         <div class="row justify-content-center">
             <div v-if="disclist != null" class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
-                <Disco v-for = "(disco,index) in filterList" :key="index" 
+                <Disco v-for = "(disco,index) in filterList"  :key="index" 
                 :image=disco.poster
                 :title=disco.title
                 :author=disco.author
@@ -31,7 +31,8 @@ export default {
     },
     props:{
         "parentList":Array,
-        "filterList":Array
+        "filterList":Array,
+        "filterArtists":Array,
     },
 
     data(){

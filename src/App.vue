@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <HeaderWrapper @filterList="getListFiltered" 
+    <HeaderWrapper @filterListArtisits="getListArtistsFiltered" @filterList="getListFiltered" 
     :parentList="parentDiscList" 
     />
     <!-- ASCOLTO L'EVENTO - QUINDI OTTENGO LA LISTA -->
     <MainWrapper @getList="getListFromChild"
     :filterList="filteGenreList"
+    :filterArtists="filterArtistList"
     />
   </div>
 </template>
@@ -25,6 +26,7 @@ export default {
     return{
       parentDiscList:[],
       filteGenreList:[],
+      filterArtistList:[]
     }
   },
 
@@ -40,6 +42,10 @@ export default {
       console.warn("filter list header")
       console.error(filtered);
       console.warn(this.filteGenreList);
+    },
+
+    getListArtistsFiltered(element){
+      this.filterArtistList = element;
     }
   } 
 
