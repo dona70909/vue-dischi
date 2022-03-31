@@ -2,7 +2,7 @@
     <main class="container-fluid">
         <div class="row justify-content-center">
             
-            <div v-if="filterList != null" class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
+            <div v-if="disclist != null" class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
                 <Disco v-for = "(disco,index) in filterList" :key="index" 
                 :image=disco.poster
                 :title=disco.title
@@ -42,7 +42,7 @@ export default {
 
 
     mounted(){
-        setTimeout(this.getDiscListApi,1000);
+        setTimeout(this.getDiscListApi,3000);
     },
 
     methods: {

@@ -12,7 +12,7 @@
                     <option class="text-white bg-dark" v-for = "(genre,index) in listGenres()" :key="index" :value="genre">{{genre}}</option>
                 </select>
             </div>
-            <div class="col-4">{{selected}} - {{this.giveListParent()}}</div>
+            <div class="d-none">{{this.giveListParent()}}</div>
         </div>
     </header>
 </template>
