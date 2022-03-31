@@ -28,6 +28,7 @@ export default {
 
 .card{
     width: calc(80% / 5);
+    /* height: 200px; */
     background:$lightGrey;
 
     img{

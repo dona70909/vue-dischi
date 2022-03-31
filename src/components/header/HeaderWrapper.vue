@@ -65,7 +65,7 @@ export default {
 
     },
 
-   /*  mounted(){
+    /*  mounted(){
         console.error("questa lista e' filtered");
         this.giveListParent();
     }   */

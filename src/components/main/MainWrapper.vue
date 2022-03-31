@@ -1,7 +1,7 @@
 <template>
     <main class="container-fluid">
+        <!-- py/4 -->
         <div class="row justify-content-center">
-            
             <div v-if="disclist != null" class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
                 <Disco v-for = "(disco,index) in filterList" :key="index" 
                 :image=disco.poster
@@ -73,6 +73,7 @@ export default {
 main{
     background:$darkGrey;
     height: calc(95vh - 1rem);
+    
     display: flex;
     justify-content: center;
     align-items: center;
