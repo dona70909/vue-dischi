@@ -36,9 +36,6 @@ export default {
         }
     },
 
-    /*created: function(){
-        this.getDiscListApi(); 
-    }, */
 
     mounted(){
         setTimeout(this.getDiscListApi,1000);
@@ -49,14 +46,17 @@ export default {
             axios.get('https://flynn.boolean.careers/exercises/api/array/music')
             .then((response) => {
                 this.disclist = response.data.response;
+                this.getListToParent();
             })
             .catch((error) => {
                 console.error(error);
             })
         },
 
-        getListToSibiling(){
-            this.$emit('getList')
+        /* metodo per passare disclist to the parent */
+        getListToParent(){
+            /* $emit('nomeCustomEvent', rifermento alla lista) */
+            this.$emit('getList',this.disclist);
         }
 
     },

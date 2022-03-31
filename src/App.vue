@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <HeaderWrapper/>
-    <MainWrapper/>
+    <HeaderWrapper />
+    <!-- ASCOLTO L'EVENTO - QUINDI OTTENGO LA LISTA -->
+    <MainWrapper @getList="getListFromChild" />
   </div>
 </template>
 
@@ -14,6 +15,11 @@ export default {
   components: {
     HeaderWrapper,
     MainWrapper,
+  },
+  methods:{
+    getListFromChild(element){
+      console.warn(element);
+    }
   }
 }
 </script>
