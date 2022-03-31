@@ -7,12 +7,11 @@
                 </div>
             </div>
             <div class="col-4">
-                <select v-model="selected" class="form-select" aria-label="Default select example">
-                    <!--  <option class="text-white bg-dark" selected>Open this select menu</option> -->
-                    <option class="text-white bg-dark" v-for = "(disco,index) in parentList" :key="index" :value="disco.genre">{{disco.genre}}</option>
+                <select v-model="selected" class="form-select">
+                    <option class="text-white bg-dark" v-for = "(genre,index) in listGenres()" :key="index" :value="genre">{{genre}}</option>
                 </select>
             </div>
-            <div class="col-4">{{selected}}</div>
+            <div class="col-4">{{selected}} - {{this.giveListParent()}}</div>
         </div>
     </header>
 </template>
@@ -24,8 +23,9 @@ export default {
     name:"HeaderWrapper",
     data(){
         return{
-            selected:"Rock",
-            selectedGenre:"",
+            selected:"",
+            genreList:[],
+            filteredSelectList:[],
         }
     },
 
@@ -47,18 +47,27 @@ export default {
 
     methods:{
         giveListParent(){
-            console.log(this.selectedGenres);
-            this.$emit('filterList',this.selectedGenres)
-        },
+            this.filteredSelectList = this.selectedGenres;
+            console.table(this.selectedGenres);
+            this.$emit('filterList', this.filteredSelectList)
+        }, 
 
-        optSel(){
-            this.select = this.selectedGenre;
+        listGenres(){
+            this.parentList.forEach(element => {
+                if(!this.genreList.includes(element.genre)){
+                    this.genreList.push(element.genre);
+                }
+            });
+
+            return this.genreList;
         }
+
     },
 
     mounted(){
+        console.error("questa lista e' filtered");
         this.giveListParent();
-    } 
+    }  
 }
 </script>
 
