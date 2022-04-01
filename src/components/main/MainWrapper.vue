@@ -32,7 +32,6 @@ export default {
     props:{
         "parentList":Array,
         "filterList":Array,
-        "filterArtists":Array,
     },
 
     data(){

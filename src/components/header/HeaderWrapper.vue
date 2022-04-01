@@ -13,9 +13,8 @@
                 </select>
             </div>
             <div class="d-none">{{this.giveListParent()}}</div>
-            <!-- <div>{{this.giveListParentArtists()}}</div> -->
             <div class="col-4">
-                <select v-model="selectedArtsit" class="form-select">
+                <select v-model="selectedArtist" class="form-select">
                     <option class="text-white bg-dark" value=""> All Artists </option>
                     <option class="text-white bg-dark" v-for = "(genre,index) in listArtists()" :key="index" :value="genre">{{genre}}</option>
                 </select>
@@ -35,7 +34,6 @@ export default {
             selectedArtist:"",
             genreList:[],
             artistList:[],
-            filteredSelectList:[],
         }
     },
 
@@ -47,21 +45,30 @@ export default {
         selectedGenres(){
             if(this.selected == ""){
                 return this.parentList;
+            }
+
+            return this.parentList.filter((element) => {
+                if(this.selected != ""){
+                    return element.genre.includes(this.selected);
+                }else{
+                    if (this.selectedArtist != ""){
+                        return element.author.includes(this.selectedArtist);
+                    }
+                }
+            });
+        
+        }, 
+
+        /*selectedGenres(){
+            if(this.selected == ""){
+                return this.parentList;
             }else {
                 return this.parentList.filter((element) => {
                     return element.genre.includes(this.selected);
                 });
             }
-        },
-        selectedArtsist(){
-            if(this.selectedArtsist == ""){
-                return this.parentList;
-            }else {
-                return this.parentList.filter((element) => {
-                    return element.author.includes(this.selectedArtsist);
-                });
-            }
-        },
+        }*/
+        
     },
 
     methods:{
@@ -71,9 +78,6 @@ export default {
             this.$emit('filterList', this.filteredSelectList)
         }, 
 
-        /*  giveListParentArtists(){
-            this.$emit('filterListArtisits', this.selectedArtsist)
-        },  */
 
         listGenres(){
             this.parentList.forEach(element => {
