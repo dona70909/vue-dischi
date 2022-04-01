@@ -50,11 +50,11 @@ export default {
             return this.parentList.filter((element) => {
                 if(this.selected != ""){
                     return element.genre.includes(this.selected);
-                }else{
-                    if (this.selectedArtist != ""){
-                        return element.author.includes(this.selectedArtist);
-                    }
                 }
+
+                /*  if (this.selectedArtist != ""){
+                    return element.author.includes(this.selectedArtist);
+                } */
             });
         
         }, 
