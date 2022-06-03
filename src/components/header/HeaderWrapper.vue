@@ -7,14 +7,14 @@
                 </div>
             </div>
             <div class="col-4">
-                <select v-model="selected" class="form-select">
+                <select v-model="selected" @change ="$emit('changeSelGenre',selected)" class="form-select">
                     <option class="text-white bg-dark" value=""> All Album </option>
                     <option class="text-white bg-dark" v-for = "(genre,index) in listGenres()" :key="index" :value="genre">{{genre}}</option>
                 </select>
             </div>
-            <div class="d-none">{{this.giveListParent()}}</div>
+            <!-- <div class="d-none">{{this.giveListParent()}}</div> -->
             <div class="col-4">
-                <select v-model="selectedArtist" class="form-select">
+                <select v-model="selectedArtist" @change ="$emit('changeSelArtist',selectedArtist)"  class="form-select">
                     <option class="text-white bg-dark" value=""> All Artists </option>
                     <option class="text-white bg-dark" v-for = "(artist,index) in listArtists()" :key="index" :value="artist">{{artist}}</option>
                 </select>
@@ -42,7 +42,7 @@ export default {
     },
 
     computed: {
-        selectedGenres(){
+        /*  selectedGenres(){
             if(this.selected == ""){
                 return this.parentList;
             }
@@ -53,12 +53,12 @@ export default {
                 }
             });
         
-        }, 
+        },  */
         
     },
 
     methods:{
-        giveListParent(){
+        /*  giveListParent(){
             if(this.selectedGenres != ''){
                 this.filteredSelectList = this.selectedGenres;
             } else if(this.selectedArtist != '') {
@@ -66,7 +66,7 @@ export default {
             }
             console.log(this.selectedArtist);
             this.$emit('filterList', this.filteredSelectList)
-        }, 
+        },  */
 
 
         listGenres(){

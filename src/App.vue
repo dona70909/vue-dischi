@@ -5,19 +5,27 @@
       //# @filterList="getListFiltered" custom event created by emit from the header 
 
       //% passing :parentList="parentDiscList" as props to the child header from mainwrapper
+
+      @filterList="getListFiltered"
       
       -->
     <HeaderWrapper 
-    @filterList="getListFiltered" 
+
+    @changeSelGenre ="getSelGenre"
+    @changeSelArtist ="getSelArtist"
     :parentList="parentDiscList" 
     />
     <!-- 
       //%  @getList="getListFromChild" this a event function from mainWrapper child in order to get the list by axios call get
       // # :filterList="filteGenreList" passing the filter list to the main wrapper
+      //  :filterList="filteGenreList"
     -->
     <MainWrapper 
     @getList="getListFromChild"
-    :filterList="filteGenreList"
+   
+
+    :selectedGenre ="selectedGenre"
+    :selectedArtist ="selectedArtist"
     />
   </div>
 </template>
@@ -38,6 +46,9 @@ export default {
       /* creating new data in order to pass props from the child header to mainWrapper child  */
       parentDiscList:[],
       filteGenreList:[],
+
+      selectedGenre : "",
+      selectedArtist : "",
     
     }
   },
@@ -53,6 +64,18 @@ export default {
     getListFiltered(filtered){
       this.filteGenreList = filtered;
     },
+
+    getSelGenre(genre){
+
+      return  this.selectedGenre = genre;
+      
+    },
+
+    getSelArtist(artist){
+
+      return  this.selectedArtist = artist;
+      
+    }
 
 
   } 
