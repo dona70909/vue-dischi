@@ -16,7 +16,7 @@
             <div class="col-4">
                 <select v-model="selectedArtist" class="form-select">
                     <option class="text-white bg-dark" value=""> All Artists </option>
-                    <option class="text-white bg-dark" v-for = "(genre,index) in listArtists()" :key="index" :value="genre">{{genre}}</option>
+                    <option class="text-white bg-dark" v-for = "(artist,index) in listArtists()" :key="index" :value="artist">{{artist}}</option>
                 </select>
             </div>
         </div>
@@ -51,30 +51,20 @@ export default {
                 if(this.selected != ""){
                     return element.genre.includes(this.selected);
                 }
-
-                /*  if (this.selectedArtist != ""){
-                    return element.author.includes(this.selectedArtist);
-                } */
             });
         
         }, 
-
-        /*selectedGenres(){
-            if(this.selected == ""){
-                return this.parentList;
-            }else {
-                return this.parentList.filter((element) => {
-                    return element.genre.includes(this.selected);
-                });
-            }
-        }*/
         
     },
 
     methods:{
         giveListParent(){
-            this.filteredSelectList = this.selectedGenres;
-            console.table(this.selectedGenres);
+            if(this.selectedGenres != ''){
+                this.filteredSelectList = this.selectedGenres;
+            } else if(this.selectedArtist != '') {
+                this.filteredSelectList = this.selectedArtist;
+            }
+            console.log(this.selectedArtist);
             this.$emit('filterList', this.filteredSelectList)
         }, 
 

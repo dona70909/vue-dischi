@@ -57,9 +57,7 @@ export default {
             })
         },
 
-        /* metodo per passare disclist to the parent */
         getListToParent(){
-            /* $emit('nomeCustomEvent', rifermento alla lista) */
             this.$emit('getList',this.disclist);
         }
 

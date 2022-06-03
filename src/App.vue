@@ -1,10 +1,22 @@
 <template>
   <div id="app">
-    <HeaderWrapper  @filterList="getListFiltered" 
+
+    <!-- 
+      //# @filterList="getListFiltered" custom event created by emit from the header 
+
+      //% passing :parentList="parentDiscList" as props to the child header from mainwrapper
+      
+      -->
+    <HeaderWrapper 
+    @filterList="getListFiltered" 
     :parentList="parentDiscList" 
     />
-    <!-- ASCOLTO L'EVENTO - QUINDI OTTENGO LA LISTA -->
-    <MainWrapper @getList="getListFromChild"
+    <!-- 
+      //%  @getList="getListFromChild" this a event function from mainWrapper child in order to get the list by axios call get
+      // # :filterList="filteGenreList" passing the filter list to the main wrapper
+    -->
+    <MainWrapper 
+    @getList="getListFromChild"
     :filterList="filteGenreList"
     />
   </div>
@@ -23,6 +35,7 @@ export default {
 
   data(){
     return{
+      /* creating new data in order to pass props from the child header to mainWrapper child  */
       parentDiscList:[],
       filteGenreList:[],
     
@@ -30,17 +43,15 @@ export default {
   },
 
   methods:{
+
+    /* get the list of all the discs by genres from the headerWrapper child */
     getListFromChild(element){
       this.parentDiscList = element;
-      console.log("parentList header")
-      console.log(this.parentDiscList);
     }, 
 
+    /* Function that get the disc list filtered by the header component */
     getListFiltered(filtered){
       this.filteGenreList = filtered;
-      console.warn("filter list header")
-      console.error(filtered);
-      console.warn(this.filteGenreList);
     },
 
 
