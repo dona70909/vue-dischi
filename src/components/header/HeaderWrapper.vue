@@ -41,34 +41,9 @@ export default {
         "parentList":Array,
     },
 
-    computed: {
-        /*  selectedGenres(){
-            if(this.selected == ""){
-                return this.parentList;
-            }
-
-            return this.parentList.filter((element) => {
-                if(this.selected != ""){
-                    return element.genre.includes(this.selected);
-                }
-            });
-        
-        },  */
-        
-    },
 
     methods:{
-        /*  giveListParent(){
-            if(this.selectedGenres != ''){
-                this.filteredSelectList = this.selectedGenres;
-            } else if(this.selectedArtist != '') {
-                this.filteredSelectList = this.selectedArtist;
-            }
-            console.log(this.selectedArtist);
-            this.$emit('filterList', this.filteredSelectList)
-        },  */
-
-
+         
         listGenres(){
             this.parentList.forEach(element => {
                 if(!this.genreList.includes(element.genre)){

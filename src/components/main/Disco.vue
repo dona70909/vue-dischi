@@ -1,7 +1,7 @@
 <template>
-    <div class="card py-2 d-flex flex-column align-items-center justify-content-center">
+    <div class="card col-2 py-2 d-flex justify-content-center">
         <img class="card-img-top" :src="image" alt="Card image cap">
-        <div class="card-body p-0 text-center">
+        <div class="card-body  text-center">
             <h5 class="card-title text-white fw-bolder text-uppercase">{{title}}</h5>
             <p  class="card-text m-0">{{author}}</p>
             <p class="m-0">{{year}}</p>
@@ -27,13 +27,12 @@ export default {
 @import "@/assets/scss/style.scss";
 
 .card{
-    width: calc(80% / 5);
-    /* height: 200px; */
+    
     background:$lightGrey;
 
     img{
-        width: 80%;
         margin-bottom: .5rem;
+        object-fit: contain;
     }
 
     .card-body{

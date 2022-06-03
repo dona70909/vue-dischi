@@ -1,19 +1,16 @@
 <template>
     <main class="container-fluid">
-        <!-- py/4 -->
-        <div class="row justify-content-center">
-            <div v-if="disclist != null" class="col-8 d-flex flex-wrap justify-content-center wrapper-card">
-                <Disco v-for = "(disco,index) in filterDiscs"  :key="index.id" 
-                :image=disco.poster
-                :title=disco.title
-                :author=disco.author
-                :year=disco.year
-                />
-            </div>
+        <div v-if="disclist != null" class="row py-4 d-flex justify-content-center wrapper-card">
+            <Disco v-for = "(disco,index) in filterDiscs"  :key="index.id" 
+            :image=disco.poster
+            :title=disco.title
+            :author=disco.author
+            :year=disco.year
+            />
+        </div>
 
-            <div v-else class="text-white">
-                <Loader/>
-            </div>
+        <div v-else class="text-white">
+            <Loader/>
         </div>
     </main>
 </template>
@@ -56,7 +53,6 @@ export default {
                 return this.disclist;
             }
 
-            //return this.disclist.filter(element => element.genre.some((element) => element === this.selectedGenre))
             return this.disclist.filter(function(el) {
                 return el.genre.includes(self.selectedGenre) && el.author.includes(self.selectedArtist)
             })
@@ -92,11 +88,11 @@ export default {
 
 main{
     background:$darkGrey;
-    height: calc(95vh - 1rem);
+    /* display: flex;
+    justify-content: center; */
+    height: 100vh - 5vh;
     
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    
 }
 .wrapper-card{
     gap: 1rem;
