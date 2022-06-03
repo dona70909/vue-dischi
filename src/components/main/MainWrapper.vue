@@ -1,6 +1,13 @@
 <template>
     <main class="container-fluid">
-        <div v-if="filterDiscs.length != 0" class="row d-flex justify-content-center wrapper-card">
+
+        <!-- search input only for try -->
+        <!--   <div class="row py-3">
+            <div class="col-7">
+                <input v-model="searchInput" type="text" class="p-2" placeholder="genre,artist">
+            </div>
+        </div> -->
+        <div v-if="filterDiscs.length != 0" class="row  justify-content-center wrapper-card">
             <Disco  v-for = "(disco,index) in filterDiscs"  :key="index.id" 
             :image=disco.poster
             :title=disco.title
@@ -9,7 +16,7 @@
             />
         </div>
 
-        <div v-else class="row d-flex justify-content-center wrapper-card text-white">
+        <div v-else class="row justify-content-center wrapper-card text-white">
                 <Loader/>
         </div>
     </main>
@@ -36,6 +43,7 @@ export default {
     data(){
         return{
             disclist: [],
+            searchInput:'',
         }
     },
 
@@ -52,6 +60,21 @@ export default {
 
             return this.disclist.filter(function(el) {
                 return el.genre.includes(self.selectedGenre) && el.author.includes(self.selectedArtist)
+            })
+        },
+
+        filterInput(){
+
+            const self = this;
+            
+            if(self.searchInput === ''){
+                return this.disclist;
+            }
+
+            console.log(self.searchInput);
+            console.warn(self.selectedGenre)
+            return this.disclist.filter(function(el) {
+                return ( el.genre.includes(self.searchInput) || el.genre.includes(self.selectedGenre) ) || (el.author.includes(self.searchInput) || el.author.includes(self.selectedArtist))
             })
         }
     },
