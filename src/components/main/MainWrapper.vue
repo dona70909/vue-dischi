@@ -1,7 +1,7 @@
 <template>
     <main class="container-fluid">
-        <div v-if="disclist != null" class="row py-4 d-flex justify-content-center wrapper-card">
-            <Disco v-for = "(disco,index) in filterDiscs"  :key="index.id" 
+        <div class="row py-4 d-flex justify-content-center wrapper-card">
+            <Disco  v-for = "(disco,index) in filterDiscs"  :key="index.id" 
             :image=disco.poster
             :title=disco.title
             :author=disco.author
@@ -9,8 +9,8 @@
             />
         </div>
 
-        <div v-else class="text-white">
-            <Loader/>
+        <div v-show="filterDiscs.length === null" class="row py-4 d-flex justify-content-center wrapper-card text-white">
+                <Loader/>
         </div>
     </main>
 </template>
@@ -40,14 +40,11 @@ export default {
     },
 
     mounted(){
-        //setTimeout(this.getDiscListApi,3000);
-        this.getDiscListApi();
-        console.log(this.selectedGenre)
+        setTimeout(this.getDiscListApi,2000); 
     },
 
     computed: {
         filterDiscs(){
-
             const self = this;
             if(this.selectedGenre === ''){
                 return this.disclist;
@@ -79,6 +76,18 @@ export default {
             this.$emit('getList',this.disclist);
         },
 
+        /* filterDiscs(){
+
+            const self = this;
+            if(this.selectedGenre === ''){
+                return this.disclist;
+            }
+
+            return this.disclist.filter(function(el) {
+                return el.genre.includes(self.selectedGenre) && el.author.includes(self.selectedArtist)
+            })
+        } */
+
     }
 }
 </script>
@@ -88,8 +97,6 @@ export default {
 
 main{
     background:$darkGrey;
-    /* display: flex;
-    justify-content: center; */
     height: 100vh - 5vh;
     
     
