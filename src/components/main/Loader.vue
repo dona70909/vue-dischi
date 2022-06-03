@@ -23,7 +23,7 @@ export default {
 
 /* dimensioni waves */
 #wave {
-	height: 300px;
+	height: 100vh;
 	width: 300px;
 	fill: #fff;
 }

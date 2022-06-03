@@ -43,7 +43,6 @@ export default {
 
 
     methods:{
-         
         listGenres(){
             this.parentList.forEach(element => {
                 if(!this.genreList.includes(element.genre)){

@@ -22,7 +22,6 @@
     -->
     <MainWrapper 
     @getList="getListFromChild"
-   
 
     :selectedGenre ="selectedGenre"
     :selectedArtist ="selectedArtist"

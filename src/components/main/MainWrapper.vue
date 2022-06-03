@@ -1,6 +1,6 @@
 <template>
     <main class="container-fluid">
-        <div class="row py-4 d-flex justify-content-center wrapper-card">
+        <div v-if="filterDiscs.length != 0" class="row d-flex justify-content-center wrapper-card">
             <Disco  v-for = "(disco,index) in filterDiscs"  :key="index.id" 
             :image=disco.poster
             :title=disco.title
@@ -9,7 +9,7 @@
             />
         </div>
 
-        <div v-show="filterDiscs.length === null" class="row py-4 d-flex justify-content-center wrapper-card text-white">
+        <div v-else class="row d-flex justify-content-center wrapper-card text-white">
                 <Loader/>
         </div>
     </main>
@@ -76,18 +76,6 @@ export default {
             this.$emit('getList',this.disclist);
         },
 
-        /* filterDiscs(){
-
-            const self = this;
-            if(this.selectedGenre === ''){
-                return this.disclist;
-            }
-
-            return this.disclist.filter(function(el) {
-                return el.genre.includes(self.selectedGenre) && el.author.includes(self.selectedArtist)
-            })
-        } */
-
     }
 }
 </script>
@@ -97,9 +85,8 @@ export default {
 
 main{
     background:$darkGrey;
-    height: 100vh - 5vh;
-    
-    
+    padding: 2rem;
+    height: 100vh;
 }
 .wrapper-card{
     gap: 1rem;
