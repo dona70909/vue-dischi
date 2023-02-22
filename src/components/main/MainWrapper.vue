@@ -68,6 +68,7 @@ export default {
             const self = this;
             
             if(self.searchInput === ''){
+                console.log('ciaooooo')
                 return this.disclist;
             }
 
